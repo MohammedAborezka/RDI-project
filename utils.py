@@ -10,7 +10,7 @@ def prepare_data(path):
 
 def toknize_text(data_to_be_tokenized):
   tokenizer = AutoTokenizer.from_pretrained("CAMeL-Lab/bert-base-arabic-camelbert-mix-ner")
-  return tokenizer(data_to_be_tokenized,padding='max_length', truncation=True, max_length=512, is_split_into_words=True)
+  return tokenizer(data_to_be_tokenized , is_split_into_words=True)
   
 def align_labels_with_tokens(labels, word_ids):
     new_labels = []
@@ -48,16 +48,13 @@ def align_labels_with_tokens(labels, word_ids):
 #     return encodings
 
 
-def tokenize_and_align_labels(examples):
-    tokenized_inputs = tokenizer(
-        examples["tokens"], truncation=True, is_split_into_words=True
-    )
-    all_labels = examples["ner_tags"]
+def align_labels(encodings,labels):
+    all_labels = labels
     new_labels = []
     for i, labels in enumerate(all_labels):
-        word_ids = tokenized_inputs.word_ids(i)
+        word_ids = encodings.word_ids(i)
         new_labels.append(align_labels_with_tokens(labels, word_ids))
 
-    tokenized_inputs["labels"] = new_labels
-    return tokenized_inputs
+    encodings["labels"] = new_labels
+    return encodings
 
