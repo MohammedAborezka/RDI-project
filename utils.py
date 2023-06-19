@@ -10,7 +10,7 @@ def prepare_data(path):
 
 def toknize_text(data_to_be_tokenized):
   tokenizer = AutoTokenizer.from_pretrained("CAMeL-Lab/bert-base-arabic-camelbert-mix-ner")
-  return tokenizer(data_to_be_tokenized , is_split_into_words=True)
+  return tokenizer(data_to_be_tokenized,truncation=True , is_split_into_words=True,max_length=512)
   
 def align_labels_with_tokens(labels, word_ids):
     new_labels = []
