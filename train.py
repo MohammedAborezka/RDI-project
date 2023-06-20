@@ -74,8 +74,18 @@ def compute_metrics(p):
   print(len(predictions))
   predictions = np.argmax(predictions, axis=1)
   true = flaten(true)
+  predictions = [p for i,p in enumerate(predictions) if true[i] != -100]
+  true = [t for t in true if t != -100]
+  #import pdb, sys; pdb.Pdb(stdout=sys.stdout).set_trace()
+  accuracy = accuracy_score(y_true=true, y_pred=predictions)
+  recall = recall_score(y_true=true, y_pred=predictions,average="macro")
+  precision = precision_score(y_true=true, y_pred=predictions,average="macro")
+  f1 = f1_score(y_true=true, y_pred=predictions,average="macro")
+  print(classification_report(true, predictions))
 
-  return classification_report(true, predictions)
+  return {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1}
+
+
 
 
 args = TrainingArguments(
@@ -97,3 +107,5 @@ trainer = Trainer(
 
 )
 trainer.train()
+#import pdb, sys; pdb.Pdb(stdout=sys.stdout).set_trace()
+trainer.evaluate()
