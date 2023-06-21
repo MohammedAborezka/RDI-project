@@ -70,8 +70,6 @@ def flaten(data):
 def compute_metrics(p):
   predictions, true = p
   predictions = flaten(predictions)
-  print(predictions[0])
-  print(len(predictions))
   predictions = np.argmax(predictions, axis=1)
   true = flaten(true)
   predictions = [p for i,p in enumerate(predictions) if true[i] != -100]
@@ -81,7 +79,7 @@ def compute_metrics(p):
   recall = recall_score(y_true=true, y_pred=predictions,average="macro")
   precision = precision_score(y_true=true, y_pred=predictions,average="macro")
   f1 = f1_score(y_true=true, y_pred=predictions,average="macro")
-  print(classification_report(true, predictions))
+  print(classification_report(true, predictions,target_names=labels))
 
   return {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1}
 
@@ -109,3 +107,5 @@ trainer = Trainer(
 trainer.train()
 #import pdb, sys; pdb.Pdb(stdout=sys.stdout).set_trace()
 trainer.evaluate()
+trainer.save_model("fine_tuned_model")
+tokenizer.save_pretrained("fine_tuned_model/tokenizer")

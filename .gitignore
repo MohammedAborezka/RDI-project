@@ -1,2 +1,4 @@
 *.pyc
 *.csv
+/output
+/tmp_trainer
