@@ -22,11 +22,11 @@ Named Entity Recognition (NER) is a task of Natural Language Processing (NLP) th
     4. Compare different models using F1 Score
 
 ### Current progress:
-    - [x] 1. Explore the ANERCorp Dataset from CamelLabs [ANERCorp.ipynb].
-    - [x] 2. Train on  [ANERCorp.ipynb].
-    - [x] 3. Train one or more models.
-    - [ ] 4. Compare different models using F1 Score. (On progress)
-    - [ ] 5- Add more Datasets
+   - [x] Explore the ANERCorp Dataset from CamelLabs [ANERCorp.ipynb].
+   - [x] Train on  [ANERCorp.ipynb].
+   - [x] Train one or more models.
+   - [ ] Compare different models using F1 Score. (On progress)
+   - [ ] Add more Datasets
 
 
 ## Environment
