@@ -13,7 +13,7 @@ A named entity recognition model for Arabic text to recognize persons, locations
 
 
 ## Introduction
-    Named Entity Recognition (NER) is a task of Natural Language Processing (NLP) that involves identifying and classifying named entities in a text into predefined categories such as person names, organizations, locations, and others. We used hugging face transformer: CAMeL-Lab/bert-base-arabic-camelbert-mix-ner as our base model, and we fine-tuned it with ANERcorp - CAMeL Lab Dataset. The Final model accuracy is 0.97 on the test dataset.
+Named Entity Recognition (NER) is a task of Natural Language Processing (NLP) that involves identifying and classifying named entities in a text into predefined categories such as person names, organizations, locations, and others. We used hugging face transformer: CAMeL-Lab/bert-base-arabic-camelbert-mix-ner as our base model, and we fine-tuned it with ANERcorp - CAMeL Lab Dataset. The Final model accuracy is 0.97 on the test dataset.
 
 ### Steps of the project:
     1. Explore the ANERCorp Dataset from CamelLabs
