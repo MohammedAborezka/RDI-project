@@ -62,21 +62,21 @@ Accuracy: 99%
 
 Classification report:
 
-              precision    recall  f1-score   support
+                  precision    recall  f1-score   support
 
-       B-LOC       0.95      0.98      0.97       692
-      B-MISC       0.91      0.91      0.91       171
-       B-ORG       0.94      0.87      0.90       312
-      B-PERS       0.97      0.98      0.97       523
-       I-LOC       0.91      0.95      0.93       335
-      I-MISC       0.89      0.85      0.87       175
-       I-ORG       0.95      0.89      0.92       463
-      I-PERS       0.98      0.99      0.98       942
-           O       1.00      1.00      1.00     25719
-
-    accuracy                           0.99     29332
-   macro avg       0.94      0.93      0.94     29332
-weighted avg       0.99      0.99      0.99     29332
+           B-LOC       0.95      0.98      0.97       692
+          B-MISC       0.91      0.91      0.91       171
+           B-ORG       0.94      0.87      0.90       312
+          B-PERS       0.97      0.98      0.97       523
+           I-LOC       0.91      0.95      0.93       335
+          I-MISC       0.89      0.85      0.87       175
+           I-ORG       0.95      0.89      0.92       463
+          I-PERS       0.98      0.99      0.98       942
+               O       1.00      1.00      1.00     25719
+           
+        accuracy                           0.99     29332
+       macro avg       0.94      0.93      0.94     29332
+    weighted avg       0.99      0.99      0.99     29332
 
 
 2- Test Results:
@@ -84,21 +84,21 @@ Accuracy: 97%
 
 Classification report:
 
-              precision    recall  f1-score   support
+                  precision    recall  f1-score   support
 
-       B-LOC       0.89      0.95      0.92       668
-      B-MISC       0.80      0.63      0.70       235
-       B-ORG       0.83      0.71      0.77       450
-      B-PERS       0.87      0.86      0.86       858
-       I-LOC       0.83      0.83      0.83        83
-      I-MISC       0.82      0.37      0.51       165
-       I-ORG       0.76      0.67      0.71       275
-      I-PERS       0.90      0.90      0.90       641
-           O       0.98      0.99      0.99     20672
-
-    accuracy                           0.97     24047
-   macro avg       0.85      0.77      0.80     24047
-weighted avg       0.97      0.97      0.97     24047
+          B-LOC       0.89      0.95      0.92       668
+         B-MISC       0.80      0.63      0.70       235
+          B-ORG       0.83      0.71      0.77       450
+         B-PERS       0.87      0.86      0.86       858
+          I-LOC       0.83      0.83      0.83        83
+         I-MISC       0.82      0.37      0.51       165
+          I-ORG       0.76      0.67      0.71       275
+         I-PERS       0.90      0.90      0.90       641
+              O       0.98      0.99      0.99     20672
+           
+       accuracy                           0.97     24047
+      macro avg       0.85      0.77      0.80     24047
+   weighted avg       0.97      0.97      0.97     24047
 
 
 
