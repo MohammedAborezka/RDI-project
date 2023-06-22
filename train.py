@@ -1,16 +1,14 @@
-import utils
-from datasets import ClassLabel
-import dataset
-from transformers import DataCollatorForTokenClassification
-from transformers import AutoTokenizer, AutoModelForTokenClassification
 from model import Model
+import utils
+import dataset
+from datasets import ClassLabel
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
+from sklearn.metrics import classification_report, accuracy_score, recall_score, precision_score, f1_score
 import torch
 from transformers import TrainingArguments, Trainer
-from transformers import BertTokenizer, BertForSequenceClassification
-from sklearn.metrics import classification_report
+from transformers import DataCollatorForTokenClassification
+from transformers import AutoTokenizer, AutoModelForTokenClassification
 
 sentence_train , labels_train = utils.prepare_data("./train_toknized_df.csv")
 sentence_eval , labels_eval = utils.prepare_data("./eval_toknized_df.csv")
@@ -79,11 +77,9 @@ def compute_metrics(p):
   recall = recall_score(y_true=true, y_pred=predictions,average="macro")
   precision = precision_score(y_true=true, y_pred=predictions,average="macro")
   f1 = f1_score(y_true=true, y_pred=predictions,average="macro")
-  print(classification_report(true, predictions,target_names=labels))
+  print('\n',classification_report(true, predictions,target_names=labels))
 
   return {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1}
-
-
 
 
 args = TrainingArguments(
@@ -94,9 +90,10 @@ args = TrainingArguments(
     
 
 )
-model = AutoModelForTokenClassification.from_pretrained("CAMeL-Lab/bert-base-arabic-camelbert-mix-ner")
+# model = AutoModelForTokenClassification.from_pretrained("CAMeL-Lab/bert-base-arabic-camelbert-mix-ner")
+model = Model()
 trainer = Trainer(
-    model=model,
+    model=model.model,
     args=args,
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
@@ -104,6 +101,7 @@ trainer = Trainer(
     data_collator = data_collator
 
 )
+
 trainer.train()
 #import pdb, sys; pdb.Pdb(stdout=sys.stdout).set_trace()
 trainer.evaluate()

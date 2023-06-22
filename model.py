@@ -1,10 +1,10 @@
 from torch import nn
-from transformers import AutoTokenizer, AutoModelForTokenClassification
+from transformers import AutoModelForTokenClassification
 
 class Model(nn.Module):
-   def _init_(self):
+  def __init__(self):
+    super().__init__()
     self.model = AutoModelForTokenClassification.from_pretrained("CAMeL-Lab/bert-base-arabic-camelbert-mix-ner")
-    def get_model(self):
-      return self.model
-def forward():
-  pass
+
+  def forward():
+    pass

@@ -39,12 +39,13 @@ def compute_metrics(p,t):
   true = flaten(true)
   #predictions = [p for i,p in enumerate(predictions) if true[i] != -100]
   #true = [t for t in true if t != -100]
-  #import pdb, sys; pdb.Pdb(stdout=sys.stdout).set_trace()
+  # import pdb, sys; pdb.Pdb(stdout=sys.stdout).set_trace()
   accuracy = accuracy_score(y_true=true, y_pred=predictions)
   recall = recall_score(y_true=true, y_pred=predictions,average="macro")
   precision = precision_score(y_true=true, y_pred=predictions,average="macro")
   f1 = f1_score(y_true=true, y_pred=predictions,average="macro")
-  #print(classification_report(true, predictions,target_names=labels)
+  # print(classification_report(true, predictions))
+  print(classification_report(true, predictions,target_names=labels))
 
   return {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1}
 # outputs = model(**text_encodings_with_labels_test)
@@ -63,7 +64,6 @@ for sen in tqdm(sentence_test):
       joined_outputs.append(output)
     last_word_id = wid 
   predicted_labels.append(joined_outputs)
-
 
 print(compute_metrics(predicted_labels,embeded_labels_test))
 

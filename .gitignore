@@ -2,3 +2,4 @@
 *.csv
 /output
 /tmp_trainer
+/fine_tuned_model
