@@ -13,12 +13,15 @@ import torch
 args = sys.argv
 labels = ["B-LOC","B-MISC", "B-ORG", "B-PERS", "I-LOC","I-MISC", "I-ORG","I-PERS","O"]
 
+model_path = "/content/repo/fine_tuned_model/tokenizer"
+tokenizer_path = "/content/repo/fine_tuned_model"
+
 class Infer():
-  def __init__(self):
+  def __init__(self,model_path = model_path, tokenizer_path = tokenizer_path):
     # Initialize the tokenizer and the model
-    self.tokenizer = AutoTokenizer.from_pretrained("/content/repo/fine_tuned_model/tokenizer")
-    self.model = AutoModelForTokenClassification.from_pretrained("/content/repo/fine_tuned_model")
-  
+    self.tokenizer = AutoTokenizer.from_pretrained(model_path)
+    self.model = AutoModelForTokenClassification.from_pretrained(tokenizer_path)
+
   def infer(self,sentence):
     # Select the tokenizer for one str sentence or for a tokenized sentence (list)
     if type(sentence) == str:
@@ -36,6 +39,7 @@ class Infer():
 
 def main():
   args = sys.argv
+  
   predict = Infer()
   prediction,word_ids=predict.infer(args[1])
   # Map the predictions into str labels

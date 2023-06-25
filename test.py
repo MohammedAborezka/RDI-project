@@ -9,9 +9,13 @@ from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_sc
 from sklearn.metrics import classification_report
 from infer import Infer
 from tqdm import tqdm
+import sys
+
+test_args = sys.argv 
 
 # read the test dataset
-sentence_test , labels_test = utils.prepare_data("/content/repo/toknized_test_df.csv")
+# Path of the dataset >> "/content/repo/toknized_test_df.csv"
+sentence_test , labels_test = utils.prepare_data(test_args[1])
 
 # Convert text labels into numbers
 labels = ["B-LOC","B-MISC", "B-ORG", "B-PERS", "I-LOC","I-MISC", "I-ORG","I-PERS","O"]
@@ -75,7 +79,7 @@ def compute_metrics(p,t):
   precision = precision_score(y_true=true, y_pred=predictions,average="macro")
   f1 = f1_score(y_true=true, y_pred=predictions,average="macro")
   # print(classification_report(true, predictions))
-  print(classification_report(true, predictions,target_names=labels))
+  print(classification_report(true, predictions,target_names=labels,labels=list(range(9))))
 
   return {"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1}
 
@@ -84,7 +88,9 @@ def compute_metrics(p,t):
 # predictions = logits.argmax(-1)
 # trainer = Trainer(model=model,data_collator=data_collator)
 # eval1 = trainer.predict(test_dataset)
-inference = Infer()
+
+
+inference = Infer(test_args[2],test_args[3])
 predicted_labels = []
 # iterate over all the sentences from the dataset and run infer for each one  
 for sen in tqdm(sentence_test):

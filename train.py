@@ -126,6 +126,7 @@ trainer = Trainer(
     data_collator = data_collator
 
 )
+# import pdb, sys; pdb.Pdb(stdout=sys.stdout).set_trace()
 # run the training function
 trainer.train()
 #import pdb, sys; pdb.Pdb(stdout=sys.stdout).set_trace()
