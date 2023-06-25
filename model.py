@@ -6,8 +6,7 @@ class Model(nn.Module):
     super().__init__()
     self.model = AutoModelForTokenClassification.from_pretrained("CAMeL-Lab/bert-base-arabic-camelbert-mix-ner")
 
-  def forward(self,inputs):
-    pass
+  def forward(self,input_ids,attention_mask):
     # # import pdb, sys; pdb.Pdb(stdout=sys.stdout).set_trace()
-    # output = self.model(inputs)
-    # return output
+    output = self.model(input_ids, attention_mask=attention_mask)
+    return output

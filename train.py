@@ -110,7 +110,9 @@ args = TrainingArguments(
     output_dir="output",
     num_train_epochs=2,
     per_device_train_batch_size=8,
-    evaluation_strategy = 'epoch'
+    evaluation_strategy = 'epoch',
+    label_names=["labels"],
+    label_smoothing_factor=0.001,
     
 
 )
@@ -118,7 +120,7 @@ args = TrainingArguments(
 # model = AutoModelForTokenClassification.from_pretrained("CAMeL-Lab/bert-base-arabic-camelbert-mix-ner")
 model = Model()
 trainer = Trainer(
-    model=model.model,
+    model=model,
     args=args,
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
